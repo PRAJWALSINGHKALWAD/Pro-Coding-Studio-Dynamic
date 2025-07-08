@@ -1,0 +1,72 @@
+{
+  "version": "1.0",
+  "last_updated": "2025-01-08T00:00:00Z",
+  "fallback_ads": {
+    "banner": [
+      {
+        "id": "banner_001",
+        "image_url": "https://raw.githubusercontent.com/PRAJWALSINGHKALWAD/Pro-Coding-Studio-Dynamic/main/ads/banner/coding_tools_320x50.png",
+        "redirect_url": "https://github.com/PRAJWALSINGHKALWAD/Pro-Coding-Studio-Dynamic",
+        "title": "Pro Coding Tools",
+        "description": "Enhance your coding experience",
+        "active": true,
+        "priority": 1
+      },
+      {
+        "id": "banner_002", 
+        "image_url": "https://raw.githubusercontent.com/PRAJWALSINGHKALWAD/Pro-Coding-Studio-Dynamic/main/ads/banner/flutter_dev_320x50.png",
+        "redirect_url": "https://flutter.dev",
+        "title": "Flutter Development",
+        "description": "Learn Flutter development",
+        "active": true,
+        "priority": 2
+      }
+    ],
+    "interstitial": [
+      {
+        "id": "interstitial_001",
+        "image_url": "https://raw.githubusercontent.com/PRAJWALSINGHKALWAD/Pro-Coding-Studio-Dynamic/main/ads/interstitial/coding_studio_1080x1920.png",
+        "redirect_url": "https://github.com/PRAJWALSINGHKALWAD/Pro-Coding-Studio-Dynamic",
+        "title": "Pro Coding Studio",
+        "description": "Professional coding environment",
+        "active": true,
+        "priority": 1
+      },
+      {
+        "id": "interstitial_002",
+        "image_url": "https://raw.githubusercontent.com/PRAJWALSINGHKALWAD/Pro-Coding-Studio-Dynamic/main/ads/interstitial/github_projects_1080x1920.png", 
+        "redirect_url": "https://github.com/PRAJWALSINGHKALWAD",
+        "title": "GitHub Projects",
+        "description": "Explore open source projects",
+        "active": true,
+        "priority": 2
+      }
+    ],
+    "rewarded": [
+      {
+        "id": "rewarded_001",
+        "image_url": "https://raw.githubusercontent.com/PRAJWALSINGHKALWAD/Pro-Coding-Studio-Dynamic/main/ads/rewarded/premium_features_1080x1920.png",
+        "redirect_url": "https://github.com/PRAJWALSINGHKALWAD/Pro-Coding-Studio-Dynamic",
+        "title": "Unlock Premium Features",
+        "description": "Get access to premium coding tools",
+        "active": true,
+        "priority": 1
+      },
+      {
+        "id": "rewarded_002",
+        "image_url": "https://raw.githubusercontent.com/PRAJWALSINGHKALWAD/Pro-Coding-Studio-Dynamic/main/ads/rewarded/developer_resources_1080x1920.png",
+        "redirect_url": "https://developer.android.com",
+        "title": "Developer Resources", 
+        "description": "Android development resources",
+        "active": true,
+        "priority": 2
+      }
+    ]
+  },
+  "config": {
+    "refresh_interval_hours": 24,
+    "fallback_enabled": true,
+    "click_tracking": true,
+    "cache_duration_hours": 12
+  }
+}
