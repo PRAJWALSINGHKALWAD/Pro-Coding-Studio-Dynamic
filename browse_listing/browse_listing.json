@@ -1,0 +1,124 @@
+{
+  "version": "1.0",
+  "last_updated": "2025-01-08T00:00:00Z",
+  "browse_listing": [
+    {
+      "id": "chatgpt",
+      "name": "ChatGPT",
+      "description": "AI-powered conversational assistant",
+      "url": "https://chat.openai.com",
+      "icon_url": "https://raw.githubusercontent.com/PRAJWALSINGHKALWAD/Pro-Coding-Studio-Dynamic/main/browse_listing/icons/chatgpt.png",
+      "color": "#10A37F",
+      "category": "AI Tools",
+      "needs_external_browser": false,
+      "active": true,
+      "priority": 1
+    },
+    {
+      "id": "gemini",
+      "name": "Google Gemini",
+      "description": "Google's advanced AI assistant",
+      "url": "https://gemini.google.com",
+      "icon_url": "https://raw.githubusercontent.com/PRAJWALSINGHKALWAD/Pro-Coding-Studio-Dynamic/main/browse_listing/icons/gemini.png",
+      "color": "#4285F4",
+      "category": "AI Tools",
+      "needs_external_browser": false,
+      "active": true,
+      "priority": 2
+    },
+    {
+      "id": "claude",
+      "name": "Claude",
+      "description": "Anthropic's helpful AI assistant",
+      "url": "https://claude.ai",
+      "icon_url": "https://raw.githubusercontent.com/PRAJWALSINGHKALWAD/Pro-Coding-Studio-Dynamic/main/browse_listing/icons/claude.png",
+      "color": "#D97706",
+      "category": "AI Tools",
+      "needs_external_browser": false,
+      "active": true,
+      "priority": 3
+    },
+    {
+      "id": "github_copilot",
+      "name": "GitHub Copilot",
+      "description": "AI-powered code completion",
+      "url": "https://copilot.github.com",
+      "icon_url": "https://raw.githubusercontent.com/PRAJWALSINGHKALWAD/Pro-Coding-Studio-Dynamic/main/browse_listing/icons/github_copilot.png",
+      "color": "#6F42C1",
+      "category": "AI Tools",
+      "needs_external_browser": false,
+      "active": true,
+      "priority": 4
+    },
+    {
+      "id": "perplexity",
+      "name": "Perplexity",
+      "description": "AI-powered search engine",
+      "url": "https://perplexity.ai",
+      "icon_url": "https://raw.githubusercontent.com/PRAJWALSINGHKALWAD/Pro-Coding-Studio-Dynamic/main/browse_listing/icons/perplexity.png",
+      "color": "#20B2AA",
+      "category": "AI Tools",
+      "needs_external_browser": false,
+      "active": true,
+      "priority": 5
+    },
+    {
+      "id": "stackoverflow",
+      "name": "Stack Overflow",
+      "description": "Programming community and Q&A",
+      "url": "https://stackoverflow.com",
+      "icon_url": "https://raw.githubusercontent.com/PRAJWALSINGHKALWAD/Pro-Coding-Studio-Dynamic/main/browse_listing/icons/stackoverflow.png",
+      "color": "#F58025",
+      "category": "Development",
+      "needs_external_browser": false,
+      "active": true,
+      "priority": 6
+    },
+    {
+      "id": "mdn",
+      "name": "MDN Web Docs",
+      "description": "Web development documentation",
+      "url": "https://developer.mozilla.org",
+      "icon_url": "https://raw.githubusercontent.com/PRAJWALSINGHKALWAD/Pro-Coding-Studio-Dynamic/main/browse_listing/icons/mdn.png",
+      "color": "#005A9C",
+      "category": "Development",
+      "needs_external_browser": false,
+      "active": true,
+      "priority": 7
+    },
+    {
+      "id": "github",
+      "name": "GitHub",
+      "description": "Version control and collaboration",
+      "url": "https://github.com",
+      "icon_url": "https://raw.githubusercontent.com/PRAJWALSINGHKALWAD/Pro-Coding-Studio-Dynamic/main/browse_listing/icons/github.png",
+      "color": "#24292E",
+      "category": "Development",
+      "needs_external_browser": false,
+      "active": true,
+      "priority": 8
+    }
+  ],
+  "categories": [
+    {
+      "id": "ai_tools",
+      "name": "AI Tools",
+      "description": "AI-powered development assistants",
+      "icon": "smart_toy",
+      "color": "#10A37F"
+    },
+    {
+      "id": "development",
+      "name": "Development",
+      "description": "Development tools and resources",
+      "icon": "code",
+      "color": "#6F42C1"
+    }
+  ],
+  "config": {
+    "refresh_interval_hours": 24,
+    "cache_duration_hours": 12,
+    "show_categories": true,
+    "default_category": "ai_tools"
+  }
+}
