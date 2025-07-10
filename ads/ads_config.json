@@ -25,7 +25,7 @@
     "interstitial": [
       {
         "id": "interstitial_001",
-        "image_url": "https://raw.githubusercontent.com/PRAJWALSINGHKALWAD/Pro-Coding-Studio-Dynamic/main/ads/interstitial/coding_studio_1080x1920.png",
+        "image_url": "https://raw.githubusercontent.com/PRAJWALSINGHKALWAD/Pro-Coding-Studio-Dynamic/main/ads/interstitial/interstitial1.png",
         "redirect_url": "https://github.com/PRAJWALSINGHKALWAD/Pro-Coding-Studio-Dynamic",
         "title": "Pro Coding Studio",
         "description": "Professional coding environment",
@@ -34,7 +34,7 @@
       },
       {
         "id": "interstitial_002",
-        "image_url": "https://raw.githubusercontent.com/PRAJWALSINGHKALWAD/Pro-Coding-Studio-Dynamic/main/ads/interstitial/github_projects_1080x1920.png", 
+        "image_url": "https://raw.githubusercontent.com/PRAJWALSINGHKALWAD/Pro-Coding-Studio-Dynamic/main/ads/interstitial/interstitial2.png", 
         "redirect_url": "https://github.com/PRAJWALSINGHKALWAD",
         "title": "GitHub Projects",
         "description": "Explore open source projects",
