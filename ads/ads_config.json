@@ -45,7 +45,7 @@
     "rewarded": [
       {
         "id": "rewarded_001",
-        "image_url": "https://raw.githubusercontent.com/PRAJWALSINGHKALWAD/Pro-Coding-Studio-Dynamic/main/ads/rewarded/premium_features_1080x1920.png",
+        "image_url": "https://raw.githubusercontent.com/PRAJWALSINGHKALWAD/Pro-Coding-Studio-Dynamic/main/ads/rewarded/rewarded1.png",
         "redirect_url": "https://github.com/PRAJWALSINGHKALWAD/Pro-Coding-Studio-Dynamic",
         "title": "Unlock Premium Features",
         "description": "Get access to premium coding tools",
@@ -54,7 +54,7 @@
       },
       {
         "id": "rewarded_002",
-        "image_url": "https://raw.githubusercontent.com/PRAJWALSINGHKALWAD/Pro-Coding-Studio-Dynamic/main/ads/rewarded/developer_resources_1080x1920.png",
+        "image_url": "https://raw.githubusercontent.com/PRAJWALSINGHKALWAD/Pro-Coding-Studio-Dynamic/main/ads/rewarded/rewarded2.png",
         "redirect_url": "https://developer.android.com",
         "title": "Developer Resources", 
         "description": "Android development resources",
