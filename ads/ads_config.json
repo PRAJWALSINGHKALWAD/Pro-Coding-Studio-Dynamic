@@ -46,7 +46,7 @@
       {
         "id": "rewarded_001",
         "image_url": "https://raw.githubusercontent.com/PRAJWALSINGHKALWAD/Pro-Coding-Studio-Dynamic/main/ads/rewarded/rewarded1.png",
-        "redirect_url": "https://github.com/PRAJWALSINGHKALWAD/Pro-Coding-Studio-Dynamic",
+        "redirect_url": "https://play.google.com/store/apps/details?id=com.srk.pdf",
         "title": "Unlock Premium Features",
         "description": "Get access to premium coding tools",
         "active": true,
@@ -55,11 +55,20 @@
       {
         "id": "rewarded_002",
         "image_url": "https://raw.githubusercontent.com/PRAJWALSINGHKALWAD/Pro-Coding-Studio-Dynamic/main/ads/rewarded/rewarded2.png",
-        "redirect_url": "https://developer.android.com",
+        "redirect_url": "https://play.google.com/store/apps/details?id=com.pmk.pro_calculator",
         "title": "Developer Resources", 
         "description": "Android development resources",
         "active": true,
         "priority": 2
+      },
+      {
+        "id": "rewarded_003",
+        "image_url": "https://raw.githubusercontent.com/PRAJWALSINGHKALWAD/Pro-Coding-Studio-Dynamic/main/ads/rewarded/rewarded3.png",
+        "redirect_url": "https://youtube.com/@varshakalwad?si=-_w7N6-OrcDu1DOP",
+        "title": "Developer Resources", 
+        "description": "Android development resources",
+        "active": true,
+        "priority": 3
       }
     ]
   },
