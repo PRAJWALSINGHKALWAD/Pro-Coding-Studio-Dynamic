@@ -1,1 +1,50 @@
-hello
+{
+  "extensions": [
+    {
+      "id": "hello-world-remote",
+      "name": "Hello World (Remote)",
+      "version": "0.0.1",
+      "publisher": "pro-coding-studio",
+      "description": "Remote panel example loaded over HTTPS.",
+      "homepage": "https://example.com/hello-world",
+      "icon": "https://example.com/assets/icons/hello.png",
+      "panels": [
+        {
+          "id": "hello.panel",
+          "title": "Hello Panel",
+          "url": "https://prajwalsinghkalwad.github.io/Pro-Coding-Studio-Dynamic/extensions/hello/index.html"
+        }
+      ]
+    },
+    {
+      "id": "docs-viewer",
+      "name": "Docs Viewer",
+      "version": "1.0.0",
+      "publisher": "pro-coding-studio",
+      "description": "Loads a hosted documentation panel.",
+      "homepage": "https://example.com/docs",
+      "panels": [
+        {
+          "id": "docs.panel",
+          "title": "Documentation",
+          "url": "https://your-domain.com/pcs-extensions/docs/index.html"
+        }
+      ]
+    },
+    {
+      "id": "local-sample",
+      "name": "Local Sample",
+      "version": "0.0.1",
+      "publisher": "pro-coding-studio",
+      "description": "Demonstrates local asset fallback (when bundled).",
+      "homepage": "https://example.com/local-sample",
+      "panels": [
+        {
+          "id": "local.panel",
+          "title": "Local Panel",
+          "html": "assets/extensions/hello_world/panel/index.html"
+        }
+      ]
+    }
+  ]
+}
