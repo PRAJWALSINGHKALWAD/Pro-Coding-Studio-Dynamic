@@ -2,17 +2,17 @@
   "extensions": [
     {
       "id": "hello-world-remote",
-      "name": "Hello World (Remote)",
+      "name": "Testing",
       "version": "0.0.1",
       "publisher": "pro-coding-studio",
-      "description": "Remote panel example loaded over HTTPS.",
-      "homepage": "https://www.google.com/",
+      "description": "Testing api does working or not",
+      "homepage": "https://prajwalsinghkalwad.github.io/Pro-Coding-Studio-Dynamic/",
       "icon": "https://example.com/assets/icons/hello.png",
       "panels": [
         {
           "id": "hello.panel",
           "title": "Hello Panel",
-          "url": "https://www.google.com/"
+          "url": "https://prajwalsinghkalwad.github.io/Pro-Coding-Studio-Dynamic/"
         }
       ]
     },
