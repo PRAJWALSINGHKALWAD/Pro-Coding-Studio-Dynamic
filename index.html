@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Test Panel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 16px;
+            background: #1e1e1e;
+            color: #ffffff;
+            margin: 0;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        button {
+            background: #007acc;
+            color: white;
+            border: none;
+            padding: 12px 16px;
+            margin: 8px 0;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 14px;
+        }
+        button:hover {
+            background: #005a9e;
+        }
+        .output {
+            background: #2d2d2d;
+            border: 1px solid #3e3e3e;
+            border-radius: 4px;
+            padding: 12px;
+            margin: 8px 0;
+            white-space: pre-wrap;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .error {
+            color: #ff6b6b;
+        }
+        .success {
+            color: #51cf66;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pro Coding Studio API Test</h1>
+        
+    <button onclick="testDeviceInfo()">Test Device Info</button>
+    <button onclick="testOpenDocument()">Test Open Document</button>
+    <button onclick="testOpenFolder()">Test Open Folder</button>
+    <button onclick="testToast()">Test Toast</button>
+    <hr>
+    <button onclick="testEditorActive()">Editor: Get Active Document</button>
+    <button onclick="testEditorGetContent()">Editor: Get Current Content</button>
+    <button onclick="testEditorSetContent()">Editor: Set Content (append line)</button>
+    <button onclick="testEditorSave()">Editor: Save Active Document</button>
+        <button onclick="clearOutput()">Clear Output</button>
+        
+        <div id="output" class="output">Ready to test APIs...\n</div>
+    </div>
+
+    <script>
+    let idCounter = 1;
+    let lastPickedFile = null;
+        
+        // Simple RPC helper
+        function rpc(method, params = {}) {
+            return new Promise((resolve, reject) => {
+                const id = `test_${idCounter++}`;
+                
+                const handler = (event) => {
+                    const msg = event.data;
+                    if (msg?.rpc_result?.id === id) {
+                        window.removeEventListener('message', handler);
+                        resolve(msg.rpc_result.result);
+                    } else if (msg?.rpc_error?.id === id) {
+                        window.removeEventListener('message', handler);
+                        reject(new Error(`${msg.rpc_error.code}: ${msg.rpc_error.message}`));
+                    }
+                };
+                
+                window.addEventListener('message', handler);
+                
+                // Send request
+                const request = { id, method, params };
+                if (window.ProCodingHost && window.ProCodingHost.postMessage) {
+                    window.ProCodingHost.postMessage(JSON.stringify(request));
+                } else {
+                    reject(new Error('ProCodingHost not available'));
+                }
+                
+                // Timeout after 10 seconds
+                setTimeout(() => {
+                    window.removeEventListener('message', handler);
+                    reject(new Error('Request timeout'));
+                }, 10000);
+            });
+        }
+        
+        function log(message, type = 'info') {
+            const output = document.getElementById('output');
+            const timestamp = new Date().toLocaleTimeString();
+            const className = type === 'error' ? 'error' : type === 'success' ? 'success' : '';
+            output.innerHTML += `<span class="${className}">[${timestamp}] ${message}</span>\n`;
+            output.scrollTop = output.scrollHeight;
+        }
+        
+        async function testDeviceInfo() {
+            try {
+                log('Testing device info...', 'info');
+                const result = await rpc('host.device.info');
+                log(`Device info: ${JSON.stringify(result, null, 2)}`, 'success');
+            } catch (error) {
+                log(`Error: ${error.message}`, 'error');
+            }
+        }
+        
+        async function testOpenDocument() {
+            try {
+                log('Testing open document...', 'info');
+                const result = await rpc('host.fs.openDocument');
+                if (result) {
+                    log(`File selected: ${result.name} (${result.uri})`, 'success');
+                    lastPickedFile = result;
+                    
+                    // Try to read the file if it's small
+                    if (result.size < 50000) { // Less than 50KB
+                        try {
+                            const content = await rpc('host.fs.readFileText', { uri: result.uri });
+                            log(`File content preview (first 200 chars): ${content.content.substring(0, 200)}...`, 'success');
+                        } catch (readError) {
+                            log(`Could not read file: ${readError.message}`, 'error');
+                        }
+                    }
+                } else {
+                    log('No file selected', 'info');
+                }
+            } catch (error) {
+                log(`Error: ${error.message}`, 'error');
+            }
+        }
+        
+        async function testOpenFolder() {
+            try {
+                log('Testing open folder...', 'info');
+                const result = await rpc('host.fs.openDocumentTree');
+                if (result.uri) {
+                    log(`Folder selected: ${result.uri}`, 'success');
+                    
+                    // List files in the folder
+                    try {
+                        const files = await rpc('host.fs.listFiles', { directoryUri: result.uri });
+                        log(`Found ${files.length} items in folder`, 'success');
+                        files.slice(0, 5).forEach(file => {
+                            log(`  - ${file.name} ${file.isDirectory ? '[DIR]' : `(${file.size} bytes)`}`, 'info');
+                        });
+                        if (files.length > 5) {
+                            log(`  ... and ${files.length - 5} more items`, 'info');
+                        }
+                    } catch (listError) {
+                        log(`Could not list files: ${listError.message}`, 'error');
+                    }
+                } else {
+                    log('No folder selected', 'info');
+                }
+            } catch (error) {
+                log(`Error: ${error.message}`, 'error');
+            }
+        }
+        
+        async function testToast() {
+            try {
+                log('Testing toast...', 'info');
+                await rpc('host.toast', { message: 'Hello from extension panel!' });
+                log('Toast sent successfully', 'success');
+            } catch (error) {
+                log(`Error: ${error.message}`, 'error');
+            }
+        }
+
+        async function testEditorActive() {
+            try {
+                log('Getting active document...', 'info');
+                const res = await rpc('host.editor.getActiveDocument');
+                log(`Active doc: ${JSON.stringify(res)}`, 'success');
+                if (!res && lastPickedFile) {
+                    log('No active doc. Attempting to open last picked file in editor...', 'info');
+                    const opened = await rpc('host.editor.openDocument', { uri: lastPickedFile.uri });
+                    log(`Open result: ${JSON.stringify(opened)}`, 'success');
+                }
+            } catch (error) {
+                log(`Error: ${error.message}`, 'error');
+            }
+        }
+
+        async function testEditorGetContent() {
+            try {
+                log('Getting editor content...', 'info');
+                const res = await rpc('host.editor.getCurrentContent');
+                log(`Content length: ${res?.content?.length ?? 0}`, 'success');
+            } catch (error) {
+                log(`Error: ${error.message}`, 'error');
+            }
+        }
+
+        async function testEditorSetContent() {
+            try {
+                log('Setting editor content (append line)...', 'info');
+                const res = await rpc('host.editor.getCurrentContent');
+                const now = new Date().toISOString();
+                const newText = (res?.content ?? '') + `\n// updated from panel at ${now}`;
+                const ok = await rpc('host.editor.setContent', { content: newText });
+                log(`Set content result: ${JSON.stringify(ok)}`, 'success');
+            } catch (error) {
+                log(`Error: ${error.message}`, 'error');
+            }
+        }
+
+        async function testEditorSave() {
+            try {
+                log('Saving active document...', 'info');
+                const res = await rpc('host.editor.saveActiveDocument');
+                log(`Save result: ${JSON.stringify(res)}`, 'success');
+            } catch (error) {
+                log(`Error: ${error.message}`, 'error');
+            }
+        }
+        
+        function clearOutput() {
+            document.getElementById('output').innerHTML = 'Output cleared...\n';
+        }
+        
+        // Test ping on load
+        window.addEventListener('load', () => {
+            log('Panel loaded, testing connection...', 'info');
+            
+            // Send a ping to test basic connectivity
+            if (window.ProCodingHost && window.ProCodingHost.postMessage) {
+                window.ProCodingHost.postMessage(JSON.stringify({
+                    type: 'panel:ping',
+                    data: { timestamp: Date.now() }
+                }));
+                log('Ping sent to host', 'info');
+            } else {
+                log('ProCodingHost not available', 'error');
+            }
+        });
+        
+        // Listen for messages from host
+        window.addEventListener('message', (event) => {
+            const msg = event.data;
+            if (msg?.type === 'host:pong') {
+                log(`Received pong: ${JSON.stringify(msg.data)}`, 'success');
+            }
+        });
+    </script>
+</body>
+</html>
