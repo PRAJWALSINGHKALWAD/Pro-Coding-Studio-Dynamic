@@ -45,6 +45,22 @@
           "html": "assets/extensions/hello_world/panel/index.html"
         }
       ]
+    },
+    {
+      "id": "lan-test",
+      "name": "LAN Test Extension",
+      "version": "0.0.1",
+      "publisher": "pro-coding-studio",
+      "description": "Loads a test panel from local LAN server.",
+      "homepage": "http://10.107.150.134:8000",
+      "icon": "https://example.com/assets/icons/test.png",
+      "panels": [
+        {
+          "id": "lan.panel",
+          "title": "LAN Panel",
+          "url": "http://10.107.150.134:8000"
+        }
+      ]
     }
   ]
 }
